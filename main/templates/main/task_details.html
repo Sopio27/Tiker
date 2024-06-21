@@ -1,0 +1,63 @@
+{% extends 'main/base.html' %}
+
+{% block title%} {{requested_task.Title}} {% endblock %}
+
+{% block body %}
+
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card m-4 shadow-lg" >
+        <div class="card-body ">
+            <table class="table table-striped" style="width:500px">
+              <thead>
+                <tr>
+                  <th scope="col" style="width:35%"><strong>Attribute</strong></th>
+                  <th scope="col"><strong>Description</strong></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td><strong>Title</strong></td>
+                    <td>{{requested_task.Title}}</td>
+                </tr>
+                 <tr>
+                     <td><strong>Create Date</strong></td>
+                    <td>{{requested_task.CreateDate}}</td>
+                </tr>
+                   <td><strong>Description</strong></td>
+                    <td>{{requested_task.Description}}</td>
+                </tr>
+                </tr>
+                   <td><strong>Creator</strong></td>
+                    <td>{{requested_task.CreatorUserId}}</td>
+                </tr>
+                <tr>
+                   <td><strong>Assignee</strong></td>
+                    <td>{{ requested_task.assigned_users_list }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Start Date</strong></td>
+                    <td>{{requested_task.TaskStartDate}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Due Date</strong></td>
+                    <td>{{requested_task.TaskDueDate}}</td>
+                </tr>
+                 <tr>
+                   <td><strong>Status</strong></td>
+                    <td>{{requested_task.StatusId}}</td>
+                </tr>
+                 <tr>
+                   <td><Strong>Priority</Strong></td>
+                    <td>{{requested_task.PriorityId}}</td>
+                </tr>
+                <tr>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

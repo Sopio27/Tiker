@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+
+{% block title%}Update{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+{% if user.is_authenticated and  perms.main.change_event %}
+
+
+    <div class="d-flex flex-column justify-content-center align-items-center">
+
+        <h4 class="display-5 text-center mb-3">Edit Task</h4>
+
+        <div class="card shadow-lg mb-3" >
+        <div class="card-body">
+                <form method="post" style="width:700px">
+
+                 {% csrf_token %}
+
+                 {{ form|crispy }}
+
+                  <button type="submit" class="btn btn-outline-success mt-3"> Update Task</button>
+{% if perms.main.delete_event %}
+
+                    <a href="{% url 'delete_task' task.id %}" class="btn btn-outline-danger mt-3">Delete Task</a>
+{% endif %}
+                </form>
+
+        </div>
+    </div>
+    </div>
+
+{% endif %}
+
+{% endblock %}

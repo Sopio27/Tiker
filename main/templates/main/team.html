@@ -1,0 +1,69 @@
+{% extends 'main/base.html' %}
+{% block title%} {{requested_team.TeamName}} {% endblock %}
+
+{% block body %}
+
+<div class="accordion" id="accordionExample">
+    {% for status in status_names%}
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading{{ status.id }}">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ status.id }}" aria-expanded="true" aria-controls="collapse{{ status.id }}"
+          >
+            {{status.StatusName}}
+
+          </button>
+        </h2>
+        <div id="collapse{{ status.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+             <table class="table table-hover">
+                <thead>
+                 <tr>
+
+                     {% for columns in column_names%}
+                        <th>{{ columns }}</th>
+                     {% endfor %}
+
+                     <th>Participate</th>
+
+                     {% if user.is_authenticated and  perms.main.change_event %}
+                        <th>Edit</th>
+                     {% endif %}
+
+
+                 </tr>
+                </thead>
+                 <tbody>
+                    {% for task in team_tasks %}
+                        {% if task.StatusId.StatusName == status.StatusName %}
+                            <tr class="align-middle">
+                                    <td>{{ task.Title}} </td>
+                                    <td>{{ task.TaskStartDate }}</td>
+                                    <td>{{ task.TaskDueDate }}</td>
+                                    <td>{{ task.assigned_users_list }}</td>
+                                    <td>{{ task.PriorityId }}</td>
+                                    <td>{{ task.CreatorUserId }}</td>
+
+
+                                    <td><a href="{% url 'task_details' task.id %}" class="btn btn-outline-primary">View Details</a></td>
+
+                                    <td><a href="{% url 'add_assignee' task.id %}" class="btn btn-outline-success">Participate</a></td>
+
+                                    {% if user.is_authenticated and  perms.main.change_event %}
+                                    <td><a href="{% url 'task_update' task.id %}" class="btn btn-outline-primary">Edit Task</a></td>
+                                     {% endif %}
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                 </tbody>
+             </table>
+
+          </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+
+
+{% endblock %}

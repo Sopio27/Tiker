@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+
+{% block title%}Create New Task{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+    <div class="d-flex flex-column justify-content-center align-items-center">
+
+        <h4 class="display-5 text-center mb-3">Create New Task</h4>
+
+        <div class="card shadow-lg mb-3" >
+        <div class="card-body">
+
+                <form method="post">
+
+                 {% csrf_token %}
+
+                 {{ form|crispy }}
+
+                <button type="submit" class="btn btn-success mt-3">Create Task</button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

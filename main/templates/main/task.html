@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+
+{% block title%} test task name {% endblock %}
+
+{% block body %}
+
+    <div class="card m-4" style="width: 15rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+          <h5 class="card-title"> test task name </h5>
+          <p class="card-text">  test task name </p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="{% url 'main/delete_task' de%}" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+{% endblock %}

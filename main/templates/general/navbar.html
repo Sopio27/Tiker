@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+  <div class="container-fluid">
+    <form class="d-flex justify-content-between mt-1" role="search" action="{% block search_action %}{% endblock %}" style="height: 40px">
+      <a class="navbar-brand" href="/">Tiker</a>
+      <input class="form-control me-2" style="width:200px; height: 40px" type="search" placeholder="Search" aria-label="Search" name="q">
+      <button class="btn btn-outline-success me-2" type="submit" style="width:110px">Search</button>
+      <a href="{% url 'create_task' %}" class="btn btn-outline-primary" style="width:110px">Create Task</a>
+    </form>
+      <form class="d-flex justify-content-end">
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav ms-auto mb-2">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{user}}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="/logout">Log out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+      </form>
+
+  </div>
+</nav>
